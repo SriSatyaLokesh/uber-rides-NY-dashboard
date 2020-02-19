@@ -1,4 +1,4 @@
-# uber-rides-NewYork-dashboard
+# Uber-rides-Newyork-dashboard
 
 #### Visualization of Uber rides in New york with plotly-dash
 
