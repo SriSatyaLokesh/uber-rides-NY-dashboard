@@ -16,3 +16,7 @@ Header | Definition
 `Lat` | The latitude of the Uber pickup
 `Lon` | The longitude of the Uber pickup
 `Base` | The [TLC base company](http://www.nyc.gov/html/tlc/html/industry/base_and_business.shtml) 
+
+## Resources
+
+To learn more about Dash, please visit [documentation](https://plot.ly/dash).
