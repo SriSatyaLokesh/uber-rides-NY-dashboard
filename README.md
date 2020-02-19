@@ -12,11 +12,11 @@ In the folder `uber-trip-data` of [`uber-tlc-foil-response`](https://github.com/
 
 Header | Definition
 ---|---------
-`Date/Time` | The date and time of the Uber pickup
-`Lat` | The latitude of the Uber pickup
-`Lon` | The longitude of the Uber pickup
-`Base` | The [TLC base company](http://www.nyc.gov/html/tlc/html/industry/base_and_business.shtml) 
+**Date/Time** | *The date and time of the Uber pickup*
+**Lat** | *The latitude of the Uber pickup*
+**Lon** | *The longitude of the Uber pickup*
+**Base** | *The [TLC base company]*(http://www.nyc.gov/html/tlc/html/industry/base_and_business.shtml) 
 
 ## Resources
 
-To learn more about Dash, please visit [documentation](https://plot.ly/dash).
+To learn more about `Dash`, please visit [documentation](https://plot.ly/dash).
