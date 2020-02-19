@@ -4,7 +4,7 @@
 
 ### About this app
 
-This is an app developed while learning `**Dash**`, an interactive Python framework developed by [Plotly](https://plot.ly/).
+This is an app developed while learning **`Dash`**, an interactive Python framework developed by [Plotly](https://plot.ly/).
 
 ###### Dataset from - [FiveThirtyEight](https://github.com/fivethirtyeight/uber-tlc-foil-response/tree/master/uber-trip-data)
 
