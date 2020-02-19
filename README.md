@@ -2,7 +2,7 @@
 
 #### Visualization of Uber rides in New york with plotly-dash
 
-## About this app
+### About this app
 
 This is an app developed while learning **Dash**, an interactive Python framework developed by [Plotly](https://plot.ly/).
 
