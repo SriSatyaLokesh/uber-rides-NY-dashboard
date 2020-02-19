@@ -6,7 +6,7 @@
 
 This is an app developed while learning **Dash**, an interactive Python framework developed by [Plotly](https://plot.ly/).
 
-* Dataset from - [FiveThirtyEight](https://github.com/fivethirtyeight/uber-tlc-foil-response/tree/master/uber-trip-data)
+> Dataset from - [FiveThirtyEight](https://github.com/fivethirtyeight/uber-tlc-foil-response/tree/master/uber-trip-data)
 
 In the folder `uber-trip-data` of [`uber-tlc-foil-response`](https://github.com/fivethirtyeight/uber-tlc-foil-response/tree/master/), there are six files of raw data on Uber pickups in New York City from _April to September 2014_. The files are separated by month and each has the following columns:
 
