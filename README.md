@@ -17,14 +17,15 @@ Header | Definition
 **Lon** | *The longitude of the Uber pickup*
 **Base** | *The [TLC base company](http://www.nyc.gov/html/tlc/html/industry/base_and_business.shtml)*
 
-## Resources
-
-To learn more about `Dash`, please visit [documentation](https://plot.ly/dash).
-
 ### Things to be done
+- [x] Static design on paper of Dashboard
 - [ ] Design Layout of Dashboard
    - [ ] Visualizing maps
    - [ ] Visualizing Analytics
 - [ ] Filtering and validating data from dataset
 - [ ] Different input options from users
 - [ ] Dynamic updation without page reload based on inputs
+
+#### Resources
+
+To learn more about `Dash`, please visit [documentation](https://plot.ly/dash).
