@@ -20,3 +20,11 @@ Header | Definition
 ## Resources
 
 To learn more about `Dash`, please visit [documentation](https://plot.ly/dash).
+
+### Things to be done
+- [ ] Design Layout of Dashboard
+   - [ ] Visualizing maps
+   - [ ] Visualizing Analytics
+- [ ] Filtering and validating data from dataset
+- [ ] Different input options from users
+- [ ] Dynamic updation without page reload based on inputs
