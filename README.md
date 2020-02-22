@@ -19,9 +19,10 @@ Header | Definition
 
 ### Things to be done
 - [x] Static design on paper of Dashboard
-- [ ] Design Layout of Dashboard
+- [x] Design Layout of Dashboard
    - [ ] Visualizing maps
    - [ ] Visualizing Analytics
+- [ ] Styling dashboard
 - [ ] Filtering and validating data from dataset
 - [ ] Different input options from users
 - [ ] Dynamic updation without page reload based on inputs
