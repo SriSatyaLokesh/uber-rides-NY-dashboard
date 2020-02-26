@@ -75,6 +75,8 @@ a {
   max-height: 82px;
   overflow-y: auto;
   margin: 0px 0px -3px 0px;
+  color:  white;
+  background-color: #1E1E1E;
 }
 
 .Select-control{
