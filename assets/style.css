@@ -71,5 +71,137 @@ a {
   
 }
 
+#bar-selector .Select-multi-value-wrapper{
+  max-height: 82px;
+  overflow-y: auto;
+  margin: 0px 0px -3px 0px;
+}
+
+.Select-control{
+  border: 0.5px solid #dbdbdb44;
+}
+
+.has-value.Select--single>.Select-control .Select-value .Select-value-label, .has-value.is-pseudo-focused.Select--single>.Select-control .Select-value .Select-value-label {
+  color: white;
+}
+._dash-app-content {
+  overflow-x: hidden;
+  overflow-y: hidden;
+  position: relative;
+}
+.has-value.Select--single>.Select-control .Select-value .Select-value-label, .has-value.is-pseudo-focused.Select--single>.Select-control .Select-value .Select-value-label{
+  color: #d8d8d8;
+  font-weight: 400;
+  font-size: 14px;
+}
+
+
+#date {
+  background-color: #1e1e1e;
+  font-family: "Open Sans";
+  font-weight: 400;
+  color: #dbdbdb;
+  border: 0.5px solid #dbdbdb44;
+}
+
+#date-picker{
+  width: 100%;
+}
+
+._dash-undo-redo {
+  display: none;
+}
+.DateInput.DateInput_1{
+  width: 100%;
+}
+.SingleDatePickerInput__withBorder{
+  border:none;
+}
+
+.DateInput.DateInput_1 {
+  background-color: #1e1e1e;
+}
+
+.SingleDatePickerInput__withBorder {
+  border-radius: 3px;
+  color: #dbdbdb;
+  background: #1e1e1e;
+  background-color: #1e1e1e;
+}
+.SingleDatePickerInput.SingleDatePickerInput_1.SingleDatePickerInput__withBorder.SingleDatePickerInput__withBorder_2 {
+  border: 0.0px solid #dbdbdb;
+  display: block;
+}
+.SingleDatePicker_1 {
+  border: 0.0px solid #dbdbdb;
+  display: block;
+}
+
+.SingleDatePicker_picker, .SingleDatePicker_picker_1, .SingleDatePicker_picker__directionLeft,
+.SingleDatePicker_picker__directionLeft_2{
+  filter:invert(100%);
+}
+
+/* For Mobile Phones and small screens ––––––––––––––––––––––––––––––––––––––––––––––––––*/
+@media only screen and (max-width: 768px) {
+  .four, .eight {
+      min-width: 100%;
+ }
+  h1, h2, h3, p {
+      text-align: center;
+ }
+  body {
+      display: block;
+      margin: 0px;
+      overflow-y: scroll;
+  }
+  .div-for-charts {
+      padding: 0px;
+      width: 100%;
+      text-align: center;
+ }
+
+ .div-user-controls {
+    padding: 32px;
+ }
+ 
+ .side-by-side{
+    display: inline-block;
+    width: 48%;
+  }
+
+   
+ .side-by-side-right{
+    display: inline-block;
+    width: 48%;
+    float: right;
+  }
+  .div-for-charts{
+    margin: 0px;
+  }
+} 
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px !important;
+  display: block !important;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #1e1e1e !important; 
+  border-radius: 10px !important;
+  display: block !important;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: transparent; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #d8d8d870 !important; 
+}
 
 
