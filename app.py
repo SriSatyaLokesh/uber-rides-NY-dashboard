@@ -3,13 +3,44 @@ import dash_core_components as dcc
 import dash_html_components as html
 from datetime import datetime as dt
 import utils
+import pandas as pd
+import numpy as np
 
 app = dash.Dash(
     __name__, meta_tags=[{"name": "viewport", "content": "width=device-width"}]
 )
 server = app.server
 
+# Plotly mapbox public token
+mapbox_access_token = "pk.eyJ1IjoicGxvdGx5bWFwYm94IiwiYSI6ImNqdnBvNDMyaTAxYzkzeW5ubWdpZ2VjbmMifQ.TXcBE-xg9BFdV2ocecc_7g"
+
 list_of_locations = utils.get_locations()
+
+# Initialize data frame
+df1 = pd.read_csv(
+    "https://raw.githubusercontent.com/plotly/datasets/master/uber-rides-data1.csv",
+    dtype=object,
+)
+df2 = pd.read_csv(
+    "https://raw.githubusercontent.com/plotly/datasets/master/uber-rides-data2.csv",
+    dtype=object,
+)
+df3 = pd.read_csv(
+    "https://raw.githubusercontent.com/plotly/datasets/master/uber-rides-data3.csv",
+    dtype=object,
+)
+df = pd.concat([df1, df2, df3], axis=0)
+df["Date/Time"] = pd.to_datetime(df["Date/Time"], format="%Y-%m-%d %H:%M")
+df.index = df["Date/Time"]
+df.drop("Date/Time", 1, inplace=True)
+totalList = []
+for month in df.groupby(df.index.month):
+    dailyList = []
+    for day in month[1].groupby(month[1].index.day):
+        dailyList.append(day[1])
+    totalList.append(dailyList)
+totalList = np.array(totalList)
+
 app.layout = html.Div(
     children=[
         html.Div(
