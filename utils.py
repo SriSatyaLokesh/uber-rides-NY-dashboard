@@ -16,6 +16,7 @@ def get_locations():
 
 
 def get_selection(month, day, selection):
+    global totalList
     xVal = []
     yVal = []
     xSelected = []
