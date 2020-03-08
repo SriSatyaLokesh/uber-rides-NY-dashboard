@@ -6,6 +6,8 @@ import utils
 import pandas as pd
 import numpy as np
 
+from utils import get_selection
+
 app = dash.Dash(
     __name__, meta_tags=[{"name": "viewport", "content": "width=device-width"}]
 )
@@ -138,6 +140,8 @@ app.layout = html.Div(
         )
     ]
 )
+
+
 
 
 if __name__ == "__main__":
