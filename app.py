@@ -158,13 +158,6 @@ def update_bar_selector(value, clickData):
     return list(set(holder))
 
 
-# Clear Selected Data if Click Data is used
-@app.callback(Output("histogram", "selectedData"), [Input("histogram", "clickData")])
-def update_selected_data(clickData):
-    if clickData:
-        return {"points": []}
-
-
 
 
 if __name__ == "__main__":
