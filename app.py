@@ -202,7 +202,18 @@ def update_total_rides_selection(datePicked, selection):
 
     holder = sorted([int(x) for x in selection])
 
-   
+    if holder == list(range(min(holder), max(holder) + 1)):
+        return (
+            firstOutput,
+            (
+                datePicked,
+                " - showing hour(s): ",
+                holder[0],
+                "-",
+                holder[len(holder) - 1],
+            ),
+        )
+
     holder_to_string = ", ".join(str(x) for x in holder)
     return firstOutput, (datePicked, " - showing hour(s): ", holder_to_string)
 
