@@ -20,3 +20,11 @@ def update_bar_selector(value, clickData):
 def update_selected_data(clickData):
     if clickData:
         return {"points": []}
+
+# Update the total number of rides Tag
+@app.callback(Output("total-rides", "children"), [Input("date-picker", "date")])
+def update_total_rides(datePicked):
+    date_picked = dt.strptime(datePicked, "%Y-%m-%d")
+    return "Total Number of rides: {:,d}".format(
+        len(totalList[date_picked.month - 4][date_picked.day - 1])
+    )
