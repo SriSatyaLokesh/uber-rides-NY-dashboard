@@ -192,6 +192,16 @@ def update_total_rides_selection(datePicked, selection):
             )
         firstOutput = "Total rides in selection: {:,d}".format(totalInSelection)
 
+    if (
+        datePicked is None
+        or selection is None
+        or len(selection) is 24
+        or len(selection) is 0
+    ):
+        return firstOutput, (datePicked, " - showing hour(s): All")
+
+    holder = sorted([int(x) for x in selection])
+
    
     holder_to_string = ", ".join(str(x) for x in holder)
     return firstOutput, (datePicked, " - showing hour(s): ", holder_to_string)
