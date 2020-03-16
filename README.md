@@ -21,10 +21,10 @@ Header | Definition
 - [x] Static design on paper of Dashboard
 - [x] Design Layout of Dashboard
    - [ ] Visualizing maps
-   - [ ] Visualizing Analytics
-- [ ] Styling dashboard
+   - [x] Visualizing Analytics
+- [x] Styling dashboard
 - [ ] Filtering and validating data from dataset
-- [ ] Different input options from users
+- [x] Different input options from users
 - [ ] Dynamic updation without page reload based on inputs
 
 #### Resources
