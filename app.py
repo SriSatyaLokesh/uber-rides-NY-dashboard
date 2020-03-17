@@ -218,6 +218,19 @@ def update_total_rides_selection(datePicked, selection):
     return firstOutput, (datePicked, " - showing hour(s): ", holder_to_string)
 
 
+# Update Histogram Figure based on Month, Day and Times Chosen
+@app.callback(
+    Output("histogram", "figure"),
+    [Input("date-picker", "date"), Input("bar-selector", "value")],
+)
+def update_histogram(datePicked, selection):
+    date_picked = dt.strptime(datePicked, "%Y-%m-%d")
+    monthPicked = date_picked.month - 4
+    dayPicked = date_picked.day - 1
+
+    [xVal, yVal, colorVal] = get_selection(monthPicked, dayPicked, selection)
+
+    
 
 if __name__ == "__main__":
     app.run_server(debug=True)
