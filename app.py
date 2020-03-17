@@ -272,15 +272,7 @@ def update_histogram(datePicked, selection):
     return go.Figure(
         data=[
             go.Bar(x=xVal, y=yVal, marker=dict(color=colorVal), hoverinfo="x"),
-            go.Scatter(
-                opacity=0,
-                x=xVal,
-                y=yVal / 2,
-                hoverinfo="none",
-                mode="markers",
-                marker=dict(color="rgb(66, 134, 244, 0)", symbol="square", size=40),
-                visible=True,
-            ),
+            
         ],
         layout=layout,
     )
