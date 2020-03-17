@@ -74,3 +74,69 @@ def update_total_rides_selection(datePicked, selection):
     holder_to_string = ", ".join(str(x) for x in holder)
     return firstOutput, (datePicked, " - showing hour(s): ", holder_to_string)
 
+# Update Histogram Figure based on Month, Day and Times Chosen
+@app.callback(
+    Output("histogram", "figure"),
+    [Input("date-picker", "date"), Input("bar-selector", "value")],
+)
+def update_histogram(datePicked, selection):
+    date_picked = dt.strptime(datePicked, "%Y-%m-%d")
+    monthPicked = date_picked.month - 4
+    dayPicked = date_picked.day - 1
+
+    [xVal, yVal, colorVal] = get_selection(monthPicked, dayPicked, selection)
+
+    layout = go.Layout(
+        bargap=0.01,
+        bargroupgap=0,
+        barmode="group",
+        margin=go.layout.Margin(l=10, r=0, t=0, b=50),
+        showlegend=False,
+        plot_bgcolor="#323130",
+        paper_bgcolor="#323130",
+        dragmode="select",
+        font=dict(color="white"),
+        xaxis=dict(
+            range=[-0.5, 23.5],
+            showgrid=False,
+            nticks=25,
+            fixedrange=True,
+            ticksuffix=":00",
+        ),
+        yaxis=dict(
+            range=[0, max(yVal) + max(yVal) / 4],
+            showticklabels=False,
+            showgrid=False,
+            fixedrange=True,
+            rangemode="nonnegative",
+            zeroline=False,
+        ),
+        annotations=[
+            dict(
+                x=xi,
+                y=yi,
+                text=str(yi),
+                xanchor="center",
+                yanchor="bottom",
+                showarrow=False,
+                font=dict(color="white"),
+            )
+            for xi, yi in zip(xVal, yVal)
+        ],
+    )
+
+    return go.Figure(
+        data=[
+            go.Bar(x=xVal, y=yVal, marker=dict(color=colorVal), hoverinfo="x"),
+            go.Scatter(
+                opacity=0,
+                x=xVal,
+                y=yVal / 2,
+                hoverinfo="none",
+                mode="markers",
+                marker=dict(color="rgb(66, 134, 244, 0)", symbol="square", size=40),
+                visible=True,
+            ),
+        ],
+        layout=layout,
+    )
