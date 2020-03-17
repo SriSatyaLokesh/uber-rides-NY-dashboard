@@ -255,7 +255,18 @@ def update_histogram(datePicked, selection):
             rangemode="nonnegative",
             zeroline=False,
         ),
-        
+        annotations=[
+            dict(
+                x=xi,
+                y=yi,
+                text=str(yi),
+                xanchor="center",
+                yanchor="bottom",
+                showarrow=False,
+                font=dict(color="white"),
+            )
+            for xi, yi in zip(xVal, yVal)
+        ],
     )
 
     return go.Figure(
