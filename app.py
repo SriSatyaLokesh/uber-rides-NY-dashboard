@@ -5,7 +5,8 @@ from datetime import datetime as dt
 import utils
 import pandas as pd
 import numpy as np
-
+from plotly import graph_objs as go
+from plotly.graph_objs import *
 from utils import get_selection
 
 app = dash.Dash(
