@@ -230,7 +230,46 @@ def update_histogram(datePicked, selection):
 
     [xVal, yVal, colorVal] = get_selection(monthPicked, dayPicked, selection)
 
-    
+    layout = go.Layout(
+        bargap=0.01,
+        bargroupgap=0,
+        barmode="group",
+        margin=go.layout.Margin(l=10, r=0, t=0, b=50),
+        showlegend=False,
+        plot_bgcolor="#323130",
+        paper_bgcolor="#323130",
+        dragmode="select",
+        font=dict(color="white"),
+        xaxis=dict(
+            range=[-0.5, 23.5],
+            showgrid=False,
+            nticks=25,
+            fixedrange=True,
+            ticksuffix=":00",
+        ),
+        yaxis=dict(
+            range=[0, max(yVal) + max(yVal) / 4],
+            showticklabels=False,
+            showgrid=False,
+            fixedrange=True,
+            rangemode="nonnegative",
+            zeroline=False,
+        ),
+        annotations=[
+            dict(
+                x=xi,
+                y=yi,
+                text=str(yi),
+                xanchor="center",
+                yanchor="bottom",
+                showarrow=False,
+                font=dict(color="white"),
+            )
+            for xi, yi in zip(xVal, yVal)
+        ],
+    )
+
+
 
 if __name__ == "__main__":
     app.run_server(debug=True)
