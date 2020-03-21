@@ -306,7 +306,10 @@ def update_graph(datePicked, selectedData, selectedLocation):
         latInitial = list_of_locations[selectedLocation]["lat"]
         lonInitial = list_of_locations[selectedLocation]["lon"]
 
-    
+    date_picked = dt.strptime(datePicked, "%Y-%m-%d")
+    monthPicked = date_picked.month - 4
+    dayPicked = date_picked.day - 1
+    listCoords = getLatLonColor(selectedData, monthPicked, dayPicked)
 
 
 if __name__ == "__main__":
