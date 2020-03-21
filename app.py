@@ -343,7 +343,15 @@ def update_graph(datePicked, selectedData, selectedLocation):
                         [0.5833, "#2BBCA4"],
                         [1.0, "#613099"],
                     ],
-                    
+                    colorbar=dict(
+                        title="Time of<br>Day",
+                        x=0.93,
+                        xpad=0,
+                        nticks=24,
+                        tickfont=dict(color="#d8d8d8"),
+                        titlefont=dict(color="#d8d8d8"),
+                        thicknessmode="pixels",
+                    ),
                 ),
             ),
             # Plot of important locations on the map
