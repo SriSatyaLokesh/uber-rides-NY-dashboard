@@ -312,7 +312,58 @@ def update_graph(datePicked, selectedData, selectedLocation):
     listCoords = getLatLonColor(selectedData, monthPicked, dayPicked)
 
     return go.Figure(
-        
+        data=[
+            # Data for all rides based on date and time
+            Scattermapbox(
+                lat=listCoords["Lat"],
+                lon=listCoords["Lon"],
+                mode="markers",
+                hoverinfo="lat+lon+text",
+                text=listCoords.index.hour,
+                marker=dict(
+                    showscale=True,
+                    color=np.append(np.insert(listCoords.index.hour, 0, 0), 23),
+                    opacity=0.5,
+                    size=5,
+                    colorscale=[
+                        [0, "#F4EC15"],
+                        [0.04167, "#DAF017"],
+                        [0.0833, "#BBEC19"],
+                        [0.125, "#9DE81B"],
+                        [0.1667, "#80E41D"],
+                        [0.2083, "#66E01F"],
+                        [0.25, "#4CDC20"],
+                        [0.292, "#34D822"],
+                        [0.333, "#24D249"],
+                        [0.375, "#25D042"],
+                        [0.4167, "#26CC58"],
+                        [0.4583, "#28C86D"],
+                        [0.50, "#29C481"],
+                        [0.54167, "#2AC093"],
+                        [0.5833, "#2BBCA4"],
+                        [1.0, "#613099"],
+                    ],
+                    colorbar=dict(
+                        title="Time of<br>Day",
+                        x=0.93,
+                        xpad=0,
+                        nticks=24,
+                        tickfont=dict(color="#d8d8d8"),
+                        titlefont=dict(color="#d8d8d8"),
+                        thicknessmode="pixels",
+                    ),
+                ),
+            ),
+            # Plot of important locations on the map
+            Scattermapbox(
+                lat=[list_of_locations[i]["lat"] for i in list_of_locations],
+                lon=[list_of_locations[i]["lon"] for i in list_of_locations],
+                mode="markers",
+                hoverinfo="text",
+                text=[i for i in list_of_locations],
+                marker=dict(size=8, color="#ffa0a0"),
+            ),
+        ],
     )
 
 
