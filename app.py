@@ -117,9 +117,7 @@ app.layout = html.Div(
                         html.P(id="total-rides-selection"),
                         html.P(id="date-value"),
                         dcc.Markdown(
-                            children=[
-                                "Source: [FiveThirtyEight](https://github.com/fivethirtyeight/uber-tlc-foil-response/tree/master/uber-trip-data)"
-                            ]
+                            
                         ),
                     ],
                 ),
