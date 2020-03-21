@@ -1,22 +1,25 @@
 import dash
 import dash_core_components as dcc
 import dash_html_components as html
-from datetime import datetime as dt
-import utils
 import pandas as pd
 import numpy as np
+import utils
+from dash.dependencies import Input, Output
 from plotly import graph_objs as go
 from plotly.graph_objs import *
-from utils import get_selection
+from datetime import datetime as dt
+
 
 app = dash.Dash(
     __name__, meta_tags=[{"name": "viewport", "content": "width=device-width"}]
 )
 server = app.server
 
+
 # Plotly mapbox public token
 mapbox_access_token = "pk.eyJ1IjoicGxvdGx5bWFwYm94IiwiYSI6ImNqdnBvNDMyaTAxYzkzeW5ubWdpZ2VjbmMifQ.TXcBE-xg9BFdV2ocecc_7g"
 
+# Dictionary of important locations in New York
 list_of_locations = utils.get_locations()
 
 # Initialize data frame
@@ -44,6 +47,7 @@ for month in df.groupby(df.index.month):
     totalList.append(dailyList)
 totalList = np.array(totalList)
 
+# Layout of Dash App
 app.layout = html.Div(
     children=[
         html.Div(
@@ -142,6 +146,58 @@ app.layout = html.Div(
     ]
 )
 
+# Gets the amount of days in the specified month
+# Index represents month (0 is April, 1 is May, ... etc.)
+daysInMonth = [30, 31, 30, 31, 31, 30]
+
+# Get index for the specified month in the dataframe
+monthIndex = pd.Index(["Apr", "May", "June", "July", "Aug", "Sept"])
+
+# Get the amount of rides per hour based on the time selected
+# This also higlights the color of the histogram bars based on
+# if the hours are selected
+def get_selection(month, day, selection):
+    xVal = []
+    yVal = []
+    xSelected = []
+    colorVal = [
+        "#F4EC15",
+        "#DAF017",
+        "#BBEC19",
+        "#9DE81B",
+        "#80E41D",
+        "#66E01F",
+        "#4CDC20",
+        "#34D822",
+        "#24D249",
+        "#25D042",
+        "#26CC58",
+        "#28C86D",
+        "#29C481",
+        "#2AC093",
+        "#2BBCA4",
+        "#2BB5B8",
+        "#2C99B4",
+        "#2D7EB0",
+        "#2D65AC",
+        "#2E4EA4",
+        "#2E38A4",
+        "#3B2FA0",
+        "#4E2F9C",
+        "#603099",
+    ]
+
+    # Put selected times into a list of numbers xSelected
+    xSelected.extend([int(x) for x in selection])
+
+    for i in range(24):
+        # If bar is selected then color it white
+        if i in xSelected and len(xSelected) < 24:
+            colorVal[i] = "#FFFFFF"
+        xVal.append(i)
+        # Get the number of rides at a particular time
+        yVal.append(len(totalList[month][day][totalList[month][day].index.hour == i]))
+    return [np.array(xVal), np.array(yVal), np.array(colorVal)]
 
 
 # Selected Data in the Histogram updates the Values in the DatePicker
@@ -173,6 +229,8 @@ def update_total_rides(datePicked):
     return "Total Number of rides: {:,d}".format(
         len(totalList[date_picked.month - 4][date_picked.day - 1])
     )
+
+
 # Update the total number of rides in selected times
 @app.callback(
     [Output("total-rides-selection", "children"), Output("date-value", "children")],
@@ -286,6 +344,23 @@ def update_histogram(datePicked, selection):
         layout=layout,
     )
 
+
+# Get the Coordinates of the chosen months, dates and times
+def getLatLonColor(selectedData, month, day):
+    listCoords = totalList[month][day]
+
+    # No times selected, output all times for chosen month and date
+    if selectedData is None or len(selectedData) is 0:
+        return listCoords
+    listStr = "listCoords["
+    for time in selectedData:
+        if selectedData.index(time) is not len(selectedData) - 1:
+            listStr += "(totalList[month][day].index.hour==" + str(int(time)) + ") | "
+        else:
+            listStr += "(totalList[month][day].index.hour==" + str(int(time)) + ")]"
+    return eval(listStr)
+
+
 # Update Map Graph based on date-picker, selected data on histogram and location dropdown
 @app.callback(
     Output("map-graph", "figure"),
@@ -309,7 +384,7 @@ def update_graph(datePicked, selectedData, selectedLocation):
     date_picked = dt.strptime(datePicked, "%Y-%m-%d")
     monthPicked = date_picked.month - 4
     dayPicked = date_picked.day - 1
-    listCoords = utils.getLatLonColor(selectedData, monthPicked, dayPicked)
+    listCoords = getLatLonColor(selectedData, monthPicked, dayPicked)
 
     return go.Figure(
         data=[
