@@ -375,7 +375,8 @@ def update_graph(datePicked, selectedData, selectedLocation):
                 bearing=bearing,
                 zoom=zoom,
             ),
-            
+            updatemenus=[
+                
             ],
         ),
     )
