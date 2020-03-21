@@ -376,7 +376,25 @@ def update_graph(datePicked, selectedData, selectedLocation):
                 zoom=zoom,
             ),
             updatemenus=[
-                
+                dict(
+                    buttons=(
+                        [
+                            dict(
+                                args=[
+                                    {
+                                        "mapbox.zoom": 12,
+                                        "mapbox.center.lon": "-73.991251",
+                                        "mapbox.center.lat": "40.7272",
+                                        "mapbox.bearing": 0,
+                                        "mapbox.style": "dark",
+                                    }
+                                ],
+                                label="Reset Zoom",
+                                method="relayout",
+                            )
+                        ]
+                    ),
+                )
             ],
         ),
     )
