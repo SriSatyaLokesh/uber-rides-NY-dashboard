@@ -368,46 +368,7 @@ def update_graph(datePicked, selectedData, selectedLocation):
             autosize=True,
             margin=go.layout.Margin(l=0, r=35, t=0, b=0),
             showlegend=False,
-            mapbox=dict(
-                accesstoken=mapbox_access_token,
-                center=dict(lat=latInitial, lon=lonInitial),  # 40.7272  # -73.991251
-                style="dark",
-                bearing=bearing,
-                zoom=zoom,
-            ),
-            updatemenus=[
-                dict(
-                    buttons=(
-                        [
-                            dict(
-                                args=[
-                                    {
-                                        "mapbox.zoom": 12,
-                                        "mapbox.center.lon": "-73.991251",
-                                        "mapbox.center.lat": "40.7272",
-                                        "mapbox.bearing": 0,
-                                        "mapbox.style": "dark",
-                                    }
-                                ],
-                                label="Reset Zoom",
-                                method="relayout",
-                            )
-                        ]
-                    ),
-                    direction="left",
-                    pad={"r": 0, "t": 0, "b": 0, "l": 0},
-                    showactive=False,
-                    type="buttons",
-                    x=0.45,
-                    y=0.02,
-                    xanchor="left",
-                    yanchor="bottom",
-                    bgcolor="#323130",
-                    borderwidth=1,
-                    bordercolor="#6d6d6d",
-                    font=dict(color="#FFFFFF"),
-                )
-            ],
+            
         ),
     )
 
