@@ -368,7 +368,15 @@ def update_graph(datePicked, selectedData, selectedLocation):
             autosize=True,
             margin=go.layout.Margin(l=0, r=35, t=0, b=0),
             showlegend=False,
+            mapbox=dict(
+                accesstoken=mapbox_access_token,
+                center=dict(lat=latInitial, lon=lonInitial),  # 40.7272  # -73.991251
+                style="dark",
+                bearing=bearing,
+                zoom=zoom,
+            ),
             
+            ],
         ),
     )
 
