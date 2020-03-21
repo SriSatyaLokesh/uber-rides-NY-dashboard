@@ -311,6 +311,10 @@ def update_graph(datePicked, selectedData, selectedLocation):
     dayPicked = date_picked.day - 1
     listCoords = getLatLonColor(selectedData, monthPicked, dayPicked)
 
+    return go.Figure(
+        
+    )
+
 
 if __name__ == "__main__":
     app.run_server(debug=True)
