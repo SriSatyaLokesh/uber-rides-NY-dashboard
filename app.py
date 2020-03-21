@@ -295,6 +295,22 @@ def update_histogram(datePicked, selection):
         Input("location-dropdown", "value"),
     ],
 )
+def update_graph(datePicked, selectedData, selectedLocation):
+    zoom = 12.0
+    latInitial = 40.7272
+    lonInitial = -73.991251
+    bearing = 0
+
+    if selectedLocation:
+        zoom = 15.0
+        latInitial = list_of_locations[selectedLocation]["lat"]
+        lonInitial = list_of_locations[selectedLocation]["lon"]
+
+    date_picked = dt.strptime(datePicked, "%Y-%m-%d")
+    monthPicked = date_picked.month - 4
+    dayPicked = date_picked.day - 1
+    listCoords = getLatLonColor(selectedData, monthPicked, dayPicked)
+
 
 if __name__ == "__main__":
     app.run_server(debug=True)
