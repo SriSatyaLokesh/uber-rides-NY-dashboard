@@ -309,7 +309,7 @@ def update_graph(datePicked, selectedData, selectedLocation):
     date_picked = dt.strptime(datePicked, "%Y-%m-%d")
     monthPicked = date_picked.month - 4
     dayPicked = date_picked.day - 1
-    listCoords = getLatLonColor(selectedData, monthPicked, dayPicked)
+    listCoords = utils.getLatLonColor(selectedData, monthPicked, dayPicked)
 
     return go.Figure(
         data=[
