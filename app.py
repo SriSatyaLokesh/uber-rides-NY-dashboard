@@ -354,7 +354,15 @@ def update_graph(datePicked, selectedData, selectedLocation):
                     ),
                 ),
             ),
-            
+            # Plot of important locations on the map
+            Scattermapbox(
+                lat=[list_of_locations[i]["lat"] for i in list_of_locations],
+                lon=[list_of_locations[i]["lon"] for i in list_of_locations],
+                mode="markers",
+                hoverinfo="text",
+                text=[i for i in list_of_locations],
+                marker=dict(size=8, color="#ffa0a0"),
+            ),
         ],
         layout=Layout(
             autosize=True,
